@@ -1,7 +1,7 @@
 # inputs are column vectors of data
 # outputs are column vectors of data
 # number_of_neurons is an integer
-function ret = csn_eml_new(inputs, outputs, number_of_neurons)
+function ret = csn_elm_new(inputs, outputs, number_of_neurons)
 	ret.inputs = inputs;
 	ret.outputs = outputs;
 	ret.number_of_inputs = columns(inputs);
@@ -25,7 +25,7 @@ function ret = csn_eml_new(inputs, outputs, number_of_neurons)
 	ret.input_weights = randn(number_of_neurons, ret.input_dim);
 
 	for dim = 1:ret.input_dim
-		ret.input_weights(:, dim) *= 1/ret.input_range(dim)**2;
+		ret.input_weights(:, dim) *= 1/(2*ret.input_range(dim));
 	end
 
 	ret.input_features = zeros(ret.number_of_neurons, ret.number_of_inputs);
